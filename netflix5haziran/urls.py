@@ -26,6 +26,7 @@ urlpatterns = [
     path('', indexPage, name='indexPage'),
     path('browsePage/<pid>', browsePage, name='browsePage'),
     path('browsePage', browsePage, name='browsePage2'),
+    path('browsePage/all/<fslug>', browsePage, name='browsePage3'),
     path('profilePage', profilePage, name='profilePage'),
     path('profileDelete/<pid>', profileDelete, name='profileDelete'), # Profile Delete
     path('profileBrowse/<pid>', profileBrowse, name='profileBrowse'), # Profile Browse
@@ -34,4 +35,6 @@ urlpatterns = [
     # USER
     path('loginPage', loginPage, name='loginPage'),
     path('registerPage', registerPage, name='registerPage'),
+    
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

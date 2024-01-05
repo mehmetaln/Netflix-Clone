@@ -14,15 +14,14 @@
             <li class="nav-item">
                <a class="nav-link" aria-current="page" href="{% url 'indexPage' %}">Anasayfa</a>
             </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">Diziler</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">Filmler</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="#">Yeni ve popüler</a>
-            </li>
+            
+            {% for i in category_list %}
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'browsePage3' i.slug %}">{{ i.title }}</a>
+               </li>
+               
+            {% endfor %}
+               
             <li class="nav-item">
                <a class="nav-link" href="#">Listem</a>
             </li>

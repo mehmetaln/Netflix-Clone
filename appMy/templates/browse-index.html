@@ -20,86 +20,18 @@
 
       <div class="container">
           <div class="row mt-5">
+              <hr class="text-light">
+              <h3 class=" my-3 text-light">{{ i.category }}</h3>
+              {% for i in contents_list  %}    
+                <div class="col-md-2 col-4 mt-1">
+                    <a href="video.html">
+                        <img src="{{ i.image.url }}" class="w-100" alt="">
+                    </a>
+                </div>
+            {% endfor %}
 
-            <h3 class="text-light">Netflix'te Popüler</h3>
-
-            <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
-                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
-                </a>
-            </div>
-
-            <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
-                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
-                </a>
-            </div>
-
-            <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
-                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
-                </a>
-            </div>
-
-            <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
-                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
-                </a>
-            </div>
-
-            <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
-                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
-                </a>
-            </div>
-
-            <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
-                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
-                </a>
-            </div>
-
-          </div>
-
-          <div class="row mt-5">
-              <h3 class="text-light"> Gündemdekiler</h3>
-
-              <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
-                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
-                </a>
-            </div>
-
-            <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
-                    <img src="{% static 'img/film2.jpg' %}" class="w-100" alt="">
-                </a>
-            </div>
-
-            <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
-                    <img src="{% static 'img/film3.jpg' %}" class="w-100" alt="">
-                </a>
-            </div>
-
-            <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
-                    <img src="{% static 'img/film4.webp' %}" class="w-100" alt="">
-                </a>
-            </div>
-
-            <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
-                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
-                </a>
-            </div>
-
-            <div class="col-md-2 col-4 mt-1">
-                <a href="video.html">
-                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
-                </a>
-            </div>
-          </div>
+          
+        
       </div>
 
 {% endblock body %}
