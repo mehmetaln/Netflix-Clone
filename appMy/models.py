@@ -11,7 +11,7 @@ class Category(models.Model):
         return self.title
         
 
-
+ 
 
 class Contents(models.Model):
     # title = models.CharField(("Başlık"), null = True, max_length=50)

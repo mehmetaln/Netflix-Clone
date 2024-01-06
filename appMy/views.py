@@ -28,5 +28,6 @@ def browsePage(request, pid=None, fslug = None):
       "profile":profile,
       "contents_list":contents_list,
       "category_list":category_list,
+      "fslug":fslug,
    }
    return render(request, 'browse-index.html', context)
