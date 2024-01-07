@@ -72,7 +72,14 @@ def hesapPage(request):
                request.user.email =email
                request.user.save()
                messages.success(request,"Email adresiniz başarı ile değişştirildi..")
+               logout(request)
+               return redirect('loginPage')
                # return redirect(loginPage)
+            else:
+               messages.error(request, "Şifreniz yanlış..")
+         else:
+            messages.error(request,"Boş bırakılan yerler var")
+   
             
       elif submit =="passwordSubmit":
          password =request.POST.get("password")
@@ -84,10 +91,14 @@ def hesapPage(request):
                   request.user.set_password(password1) # parolayı değiştirmemzi yarar
                   request.user.save()
                   messages.success(request, "Şifre Değiştirmeniz Başarılı")
+                  logout(request)
+                  return redirect('loginPage')
                else:
                   messages.error(request, "Parolanız Eşleşimiyor")
             else:
-               messages.error(request,"Parolanız yanlış")                   
+               messages.error(request,"Parolanız yanlış")        
+         else:
+            messages.error(request, "boş bırakılan yerler var")           
                                   
                                   
       
@@ -102,9 +113,15 @@ def hesapPage(request):
                request.user.usermy.save()
                messages.success(request,"Telefonunuz Başarı ile Değiştirildi")
                # return redirect(loginPage)
-         
-      logout(request)
-      return redirect('loginPage')
+               logout(request)
+               return redirect('loginPage')
+            else:
+               messages.error(request, "Şifreniz Yanlış")
+         else: 
+            messages.error(request, "Boş bırakılan yerler var")
+      
+   
+      return redirect('hesapPage')
    context = {
       "profile":profile
    }
