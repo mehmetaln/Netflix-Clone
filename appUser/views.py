@@ -59,6 +59,52 @@ def profileBrowse(request, pid):
 
 def hesapPage(request):
    profile = Profile.objects.get(user=request.user, islogin=True)
+
+   if request.method =="POST":
+      submit = request.POST.get("submit")
+      if submit=="emailSubmit":
+         email = request.POST.get("email")
+         password = request.POST.get("password")
+         if email and password: 
+            # email.strip(" ") and password.strip(" ")
+            # strip boşluk bırakarak geçmesini engelmmek için
+            if request.user.check_password(password): # parolayı kontrol etmemize yarar   
+               request.user.email =email
+               request.user.save()
+               messages.success(request,"Email adresiniz başarı ile değişştirildi..")
+               # return redirect(loginPage)
+            
+      elif submit =="passwordSubmit":
+         password =request.POST.get("password")
+         password1 =request.POST.get("password1")
+         password2 =request.POST.get("password2")
+         if password and password1 and password2:
+            if request.user.check_password(password): # parolayı kontrol etmemize yarar   
+               if password1 == password2:
+                  request.user.set_pasword(password1) # parolayı değiştirmemzi yarar
+                  request.user.save()
+                  messages.success(request, "Şifre Değiştirmeniz Başarılı")
+               else:
+                  messages.error(request, "Parolanız Eşleşimiyor")
+            else:
+               messages.error(request,"Parolanız yanlış")                   
+                                  
+                                  
+      
+      elif submit =="telSubmit":
+         tel = request.POST.get("tel")
+         password = request.POST.get("password")
+         if tel and password: 
+            # email.strip(" ") and password.strip(" ")
+            # strip boşluk bırakarak geçmesini engelmmek için
+            if request.user.check_password(password): # parolayı kontrol etmemize yarar   
+               request.user.usermy.tel =tel
+               request.user.usermy.save()
+               messages.success(request,"Telefonunuz Başarı ile Değiştirildi")
+               # return redirect(loginPage)
+         
+      logout(request)
+      return redirect('loginPage')
    context = {
       "profile":profile
    }

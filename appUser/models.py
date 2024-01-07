@@ -7,7 +7,7 @@ class Profile(models.Model):
    title = models.CharField(("Profil Adı"), max_length=50)
    image = models.ImageField(("Profil Resmi"), upload_to="profile", max_length=200)
    islogin = models.BooleanField(("Profile Online mı?"), default=False)
-   
+   email = models.EmailField(("Email"), blank=True,  max_length=254)   
    def __str__(self) -> str:
       return self.title + " " +self.user.username
 
@@ -36,5 +36,17 @@ class Userinfo(models.Model):
    address = models.TextField(("Adres"), default="-", blank=True)
    packed = models.ForeignKey(Packed, verbose_name=("Pakedi"), on_delete=models.CASCADE)
    
+   def __str__(self) -> str:
+      return self.user.username
+   
+   
+    #User modelimeize yeni objeler eklşemek istediğimizde bu şekilde kullanıyoruz model kullanıyoruz model yerine bunuda adminde bağlıyoruz
+ 
+class Usermy(models.Model):
+   user = models.OneToOneField(User, verbose_name=("Kullanıcı"), on_delete=models.CASCADE)
+   tel = models.CharField(("Telefon"), max_length=50, default="-")
+   address = models.TextField(("Adres"), default="-", blank=True)
+   packed = models.ForeignKey(Packed, verbose_name=("Pakedi"), on_delete=models.CASCADE, default =0) # Burada sıfır dememiz nedeni 0 . indexe karışılk gelen normal paket olmasıdır.
+    
    def __str__(self) -> str:
       return self.user.username
