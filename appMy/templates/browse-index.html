@@ -17,24 +17,33 @@
         </div>
 
       </div>
-
       <div class="container">
-          <div class="row mt-5">
-              
-              
-              
-              <!-- <h3 class=" my-3 text-light">{{ fslug }}</h3>
-                <h3 class=" my-3 text-light">{{ contents_list.first.category }}</h3> -->
-                {% for i in contents_list  %}   
-                
-<!--                 A -->
-                    </a>
-                    <b>{{ forloop.counter0 }}</b>
-                </div>
-            {% endfor %}
-
-          
-        
-      </div>
-
+        <div class="row mt-5">
+            <hr class="text-light">
+            <!-- <h3 class=" my-3 text-light">{{ i.category }}</h3> -->
+            <h3 class="my-3 text-light">{{ contents_list.first.category }}</h3>
+            {% for i in contents_list  %}    
+              <div class="col-md-2 col-4 mt-1">
+                  <a href="video.html">
+                      <img src="{{ i.image.url }}" class="w-100" alt="">
+                  </a>
+              </div>
+          {% endfor %}
+    </div>              
 {% endblock body %}
+
+
+
+
+      <!-- <div class="container">
+          <div class="row mt-5"> -->
+              
+            <!-- <b>{{ forloop.counter0 }}</b> -->
+              <!-- <h3 class=" my-3 text-light">{{ fslug }}</h3>
+          <h3 class=" my-3 text-light">{{ contents_list.first.category }}</h3> -->
+            <!-- <h3 class="my-3 text-light">{{ contents_list.firsr.category }}</h3>
+            {% for i in contents_list  %}   
+              <div>
+                <a href="#">{{ i.image.url }}</a>
+              </div>
+            {% endfor %} -->
