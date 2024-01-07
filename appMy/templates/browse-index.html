@@ -4,46 +4,109 @@
 
 {% block body %}
 
-      <!-- Hero image -->
-      <div class="hero-image">
+    
+    <!-- Hero image -->
+    <div class="hero-image">
+        
+    <div class="hero-text">
+        {% if request.user.usermy.packed.slug != "normal-paket" %}
+        <h1>Sınırsız film, dizi ve çok daha fazlası.</h1>
+        <h4>İstediğiniz yerde izleyin. İstediğiniz zaman iptal edin.</h4>
+        <p>İzlemeye hazır mısınız? Üyelik oluşturmak veya üyeliğinze erişmek için e-posta adresinizi girin</p>
+        <button class="btn btn-secondary btn-lg mt-3">Oynat</button>
+        <button class="btn btn-secondary btn-lg mt-3">Daha Fazla Bilgi</button>
+        {% else %}
+        <a class="fs-3 text-white" href="##">Aboneliğinizi Yenileyin</a>
+        {% endif %}
+    </div>
 
-        <div class="hero-text">
-            <h1>Sınırsız film, dizi ve çok daha fazlası.</h1>
-            <h4>İstediğiniz yerde izleyin. İstediğiniz zaman iptal edin.</h4>
-            <p>İzlemeye hazır mısınız? Üyelik oluşturmak veya üyeliğinze erişmek için e-posta adresinizi girin</p>
+    </div>
+    {% if request.user.usermy.packed.slug != "normal-paket" %}
 
-            <button class="btn btn-secondary btn-lg mt-3">Oynat</button>
-            <button class="btn btn-secondary btn-lg mt-3">Daha Fazla Bilgi</button>
+        <div class="container">
+            <div class="row mt-5">
+
+            <h3 class="text-light">Netflix'te Popüler</h3>
+
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
+                </a>
+            </div>
+
+            </div>
+
+            <div class="row mt-5">
+                <h3 class="text-light"> Gündemdekiler</h3>
+
+                <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{% static 'img/film2.jpg' %}" class="w-100" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{% static 'img/film3.jpg' %}" class="w-100" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{% static 'img/film4.webp' %}" class="w-100" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{% static 'img/film1.jpg' %}" class="w-100" alt="">
+                </a>
+            </div>
+            </div>
         </div>
+    {% endif %}
+        
 
-      </div>
-      <div class="container">
-        <div class="row mt-5">
-          <!-- <h3 class=" my-3 text-light">{{ i.category }}</h3> -->
-          <h3 class="my-3 text-light">{{ contents_list.first.category }}</h3>
-          <hr class="text-light">
-            {% for i in contents_list  %}    
-              <div class="col-md-2 col-4 mt-1">
-                  <a href="video.html">
-                      <img src="{{ i.image.url }}" class="w-100" alt="">
-                  </a>
-              </div>
-          {% endfor %}
-    </div>              
 {% endblock body %}
-
-
-
-
-      <!-- <div class="container">
-          <div class="row mt-5"> -->
-              
-            <!-- <b>{{ forloop.counter0 }}</b> -->
-              <!-- <h3 class=" my-3 text-light">{{ fslug }}</h3>
-          <h3 class=" my-3 text-light">{{ contents_list.first.category }}</h3> -->
-            <!-- <h3 class="my-3 text-light">{{ contents_list.firsr.category }}</h3>
-            {% for i in contents_list  %}   
-              <div>
-                <a href="#">{{ i.image.url }}</a>
-              </div>
-            {% endfor %} -->
