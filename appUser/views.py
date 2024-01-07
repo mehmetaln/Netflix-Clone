@@ -81,7 +81,7 @@ def hesapPage(request):
          if password and password1 and password2:
             if request.user.check_password(password): # parolayı kontrol etmemize yarar   
                if password1 == password2:
-                  request.user.set_pasword(password1) # parolayı değiştirmemzi yarar
+                  request.user.set_password(password1) # parolayı değiştirmemzi yarar
                   request.user.save()
                   messages.success(request, "Şifre Değiştirmeniz Başarılı")
                else:
