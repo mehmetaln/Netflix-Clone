@@ -35,22 +35,22 @@ def browsePage(request, pid=None, fslug = None):
    return render(request, 'browse-index.html', context)
 
 
-# def emailSendPage(request):
+def emailSendPage(request):
    
-#    if request.method == "POST":
-#       title = request.POST.get("title")
-#       text = request.POST.get("text")
+   if request.method == "POST":
+      title = request.POST.get("title")
+      text = request.POST.get("text")
      
-#       send_mail(
-#             title,
-#             text,
-#             EMAIL_HOST_USER,
-#             ["mehmettalnn@gmail.com"],
-#             fail_silently= False, 
-#          )
+      send_mail(
+            title,
+            text,
+            EMAIL_HOST_USER,
+            ["mehmettalnn@gmail.com"],
+            fail_silently= False, 
+         )
 
-#       messages.error(request,"Email Gönderilemedi")
+      messages.error(request,"Email Gönderilemedi")
       
-#       return redirect("emailSendPage")
-#    context ={}
-#    return render(request, "email-send.html", context)
+      return redirect("emailSendPage")
+   context ={}
+   return render(request, "email-send.html", context)
