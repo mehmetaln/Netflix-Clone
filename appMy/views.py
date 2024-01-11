@@ -45,7 +45,7 @@ def emailSendPage(request):
             title,
             text,
             EMAIL_HOST_USER,
-            ["mehmettalnn@gmail.com"],
+            ["serdarkose9@hotmail.com"],
             fail_silently= False, 
          )
 
