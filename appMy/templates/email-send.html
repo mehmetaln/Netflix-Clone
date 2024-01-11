@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block nonheader %}
+
+    <div class="container">
+        <h2 class="text-primary">Tüm Kullanıcılara Mail Gönder</h2>
+        <form  method="POST" class="m-auto mt-5 d-flex flex-column gap-3">
+            {% csrf_token %}
+            <input type="text" name="title" class="form-control" placeholder="Konu">
+            <textarea name="text"  placeholder="Mesaj"  class="form=control" cols="30" rows="10"></textarea>
+            <button type="submit" class="btn btn-success">Mesajı Gönder</button>
+        </form>
+    </div>
+
+{% endblock nonheader %}
+

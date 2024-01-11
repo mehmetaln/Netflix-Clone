@@ -23,6 +23,7 @@ from appUser.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('emailsend', emailSendPage, name='emailSendPage'),
     path('', indexPage, name='indexPage'),
     path('browsePage/<pid>', browsePage, name='browsePage'),
     path('browsePage', browsePage, name='browsePage2'),
