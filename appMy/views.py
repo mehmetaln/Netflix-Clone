@@ -1,9 +1,10 @@
 from django.core.mail import send_mail #mail gönderebilmemzi için gerekli  
+from netflix5haziran.settings import EMAIL_HOST_USER 
 from django.shortcuts import render, redirect
 from appUser.models import *
 from appMy.models import *
-from netflix5haziran.settings import EMAIL_HOST_USER
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 
 def indexPage(request):
@@ -37,20 +38,33 @@ def browsePage(request, pid=None, fslug = None):
 
 def emailSendPage(request):
    
+   # users = User.objects.all().values_list("email") # user içerisindeki emailleri döndermemize yarayan kod tuple olarak verilir 
+   users = User.objects.all().values("email") # user içerisindeki emailleri döndermemize yarayan kod obje  olarak verilir 
+   # print(list(users)) #[{'email': ''}, {'email': 'kemal.liya19@gmail.com'}, {'email': 'mehmettalnn@gmail.com'}, {'email': 'bbb@gmail.com'}] bunu veriri
+   user_list = []
+   for i in list(users):
+     user_list.append(i["email"]) 
+     
+   print(user_list)
+   
    if request.method == "POST":
       title = request.POST.get("title")
       text = request.POST.get("text")
      
-    
-      send_mail(
-         title,
-         text,
-         EMAIL_HOST_USER,
-         ["mehmettalnn@gmail.com"],
-         fail_silently= False, 
-      )
 
-      # messages.error(request,"Mesajınız Gönderilemedi")
+     
+      try: 
+         send_mail(
+            title,
+            text,
+            EMAIL_HOST_USER,
+            user_list,
+            fail_silently= False, 
+         
+         )
+         messages.success(request,"Mesajınız Başarıyla gönderildi")
+      except:
+         messages.error(request,"Mesajınız Gönderilemedi")
       return redirect("emailSendPage")
    
    

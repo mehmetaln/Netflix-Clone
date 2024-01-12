@@ -35,6 +35,7 @@ urlpatterns = [
     path('videoPage', videoPage, name='videoPage'),
     # USER
     path('loginPage', loginPage, name='loginPage'),
+    path('logoutPage', logoutPage, name='logoutPage'),
     path('registerPage', registerPage, name='registerPage'),
     
     

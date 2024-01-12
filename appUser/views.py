@@ -3,6 +3,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.contrib import messages
 from appUser.models import *
+from django.core.mail import send_mail #mail gönderebilmemzi için gerekli  
+from netflix5haziran.settings import EMAIL_HOST_USER 
 
 def profilePage(request):
    # ==================================
@@ -176,7 +178,17 @@ def registerPage(request):
                if not User.objects.filter(email=email).exists():
 
                   user = User.objects.create_user(username=username, password=password1, email=email,first_name=fname, last_name=lname )
+                  user.is_active = False
+                  
                   user.save()
+                  send_mail(
+                     "Netflix Email Onaylama",
+                     f"Lütfen Email hesabınızı onaylayınız:",
+                     EMAIL_HOST_USER,
+                     [email],
+                     fail_silently=False
+                  )
+                  
                   messages.success(request, "Kaydınız başarıyla oluşturuldu...")
                   return redirect("loginPage")
                else:
@@ -190,3 +202,9 @@ def registerPage(request):
                   
    context = {}
    return render(request, 'user/register.html', context)
+
+
+
+def logoutPage(request):
+   logout(request)
+   return redirect("loginPage")
