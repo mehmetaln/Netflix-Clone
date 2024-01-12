@@ -1,7 +1,7 @@
-from django.shortcuts import render,redirect
+from django.core.mail import send_mail #mail gönderebilmemzi için gerekli  
+from django.shortcuts import render, redirect
 from appUser.models import *
 from appMy.models import *
-from django.core.mail import send_mail #mail gönderebilmemzi için gerekli 
 from netflix5haziran.settings import EMAIL_HOST_USER
 from django.contrib import messages
 
@@ -41,16 +41,18 @@ def emailSendPage(request):
       title = request.POST.get("title")
       text = request.POST.get("text")
      
+    
       send_mail(
-            title,
-            text,
-            EMAIL_HOST_USER,
-            ["serdarkose9@hotmail.com"],
-            fail_silently= False, 
-         )
+         title,
+         text,
+         EMAIL_HOST_USER,
+         ["mehmettalnn@gmail.com"],
+         fail_silently= False, 
+      )
 
-      messages.error(request,"Email Gönderilemedi")
-      
+      # messages.error(request,"Mesajınız Gönderilemedi")
       return redirect("emailSendPage")
+   
+   
    context ={}
    return render(request, "email-send.html", context)
