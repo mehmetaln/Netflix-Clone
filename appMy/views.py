@@ -7,16 +7,16 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 
 
-# def indexPage(request):
-#    context = {}
-#    return render(request, 'index.html', context)
+def indexPage(request):
+   context = {}
+   return render(request, 'index.html', context)
 
-# def browsePage(request, pid=None, fslug = None):
+def browsePage(request, pid=None, fslug = None):
    
-#    if fslug:
-#       contents_list = Contents.objects.filter(category__slug = fslug).order_by("-id")
-#    else:
-#       contents_list=Contents.objects.all().order_by("-id")
+   if fslug:
+      contents_list = Contents.objects.filter(category__slug = fslug).order_by("-id")
+   else:
+      contents_list=Contents.objects.all().order_by("-id")
       
       
       
