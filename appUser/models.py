@@ -26,7 +26,7 @@ class Packed(models.Model):
       return self.title
    
    def save(self):
-      self.slug = slugify(self.title)
+      self.slug = slugify(self.title)  # packet modelimizin sluglarının otomatik gelmesi için kullandıgımız yöntem
       super().save()
    
 
@@ -46,7 +46,12 @@ class Usermy(models.Model):
    user = models.OneToOneField(User, verbose_name=("Kullanıcı"), on_delete=models.CASCADE)
    tel = models.CharField(("Telefon"), max_length=50, default="-")
    address = models.TextField(("Adres"), default="-", blank=True)
-   packed = models.ForeignKey(Packed, verbose_name=("Pakedi"), on_delete=models.CASCADE, default =0) # Burada sıfır dememiz nedeni 0 . indexe karışılk gelen normal paket olmasıdır.
-    
+   packed = models.ForeignKey(Packed, verbose_name=("Pakedi"), on_delete=models.CASCADE) # Burada sıfır dememiz nedeni 0 . indexe karışılk gelen normal paket olmasıdır.
+   user_active = models.CharField(("Kullanıcı Dogruluma Linki"), max_length=50)
+   
    def __str__(self) -> str:
       return self.user.username
+
+   def save(self):
+      print("Usermy model save ===== ")  # buna bakılacak
+      super().save() 
