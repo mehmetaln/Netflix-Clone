@@ -52,6 +52,3 @@ class Usermy(models.Model):
    def __str__(self) -> str:
       return self.user.username
 
-   def save(self):
-      print("Usermy model save ===== ")  # buna bakılacak
-      super().save() 
